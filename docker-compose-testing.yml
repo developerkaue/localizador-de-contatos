@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db_testing:
+    image: mysql:latest
+    container_name: laravel_db_testing
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: testing_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"  # Mapeamento da porta do MySQL para acesso externo
+    networks:
+      - testing_network
+
+networks:
+  testing_network:
+    driver: bridge
