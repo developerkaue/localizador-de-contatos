@@ -1,66 +1,130 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Nome do Projeto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Localizador de contatos.
 
-## About Laravel
+## Sobre
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O sistema consiste em auxiliar o usuario a encontrar determinados contatos atraves do googlemaps.
+Consumindo uma api de cadastro e tambem de gerenciamento, integrando com viacep e maps da google para facilitar
+a utilizacao das funcionalidades, utilizando tokens para autenticacao e validacao do usuario.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Funcionalidades
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+- Cadastro de usuários
+- Login e autenticação
+- Gerenciamento de contatos
+- Sistema de Ajuda para Endereço
+- Filtro de Contatos
+- Integração com GoogleMaps
+- Exclusão de Conta
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tecnologias Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Liste as tecnologias e ferramentas principais que você usou no desenvolvimento do projeto. Por exemplo:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [Laravel](https://laravel.com/)
+- [MySQL](https://www.mysql.com/)
+- [Docker](https://www.docker.com/)
+- [Tailwind](https://tailwindcss.com/)
 
-## Laravel Sponsors
+## Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Passos para instalar o projeto localmente.
 
-### Premium Partners
+1. Clone o repositório
+    ```bash
+    git clone https://github.com/developerkaue/localizador-de-contatos.git
+    ```
+2. Navegue até o diretório do projeto
+    ```bash
+    cd localizador-de-contatos
+    ```
+3. Instale as dependências do Composer
+    ```bash
+    composer install
+    ```
+4. Instale as dependências do NPM
+    ```bash
+    npm install
+    ```
+5. Instale as dependências do Docker
+    ```bash
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-## Contributing
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    sudo apt update
 
-## Code of Conduct
+    apt-cache policy docker-ce
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    sudo apt install docker-ce
 
-## Security Vulnerabilities
+    sudo systemctl status docker
+    ```
+6. Instale as dependências do php
+    ```bash
+    sudo apt install php libapache2-mod-php
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    sudo apt install php-cli
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ```          
+
+## Configuração
+
+Passos para configurar o projeto após a instalação.
+
+1. Rode o docker-compose
+    ```bash
+    docker-compose up -d
+    ```
+2. Rode a migrate
+    ```bash
+
+    php artisan migrate
+
+    Observacao: Se caso houver um erro informando que a tabela users ja existe, abra seu gerenciador mysql e de um drop na tabela e rode a migrate novamente e tudo ira funcionar.
+
+    ```
+3. Configure o arquivo `.env` com suas credenciais de banco de dados e outras configurações necessárias.
+
+
+## Uso
+
+Instruções para executar o projeto.
+
+1. Inicie o servidor de desenvolvimento
+    ```bash
+    php artisan serve
+    ```
+
+2. Acesse o projeto em seu navegador
+    ```
+    http://localhost:8000
+    ```
+
+## Testes
+
+Instruções para rodar os testes.
+
+1. Execute os testes
+    ```bash
+    php artisan test
+    ```
+
+## Contribuição
+
+Instruções sobre como contribuir para o projeto.
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/sua-feature`)
+3. Faça commit das suas alterações (`git commit -m 'Adicionei uma nova feature'`)
+4. Faça push para a branch (`git push origin feature/sua-feature`)
+5. Abra um Pull Request
+
+## Licença
+
+Sistema criado para comprovar minha experiencia em Laravel e integracoes com API`S
